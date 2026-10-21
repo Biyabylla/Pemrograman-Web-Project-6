@@ -12,6 +12,7 @@ class Mahasiswa {
         $this->prodi = $prodi;
         $this->semester = $semester;
     }
+
     public function setNilai($nilai) {
         if (is_numeric($nilai) && $nilai >= 0 && $nilai <= 100) {
             $this->nilai = $nilai;
@@ -19,25 +20,31 @@ class Mahasiswa {
             echo "Nilai tidak valid.<br>";
         }
     }
+
     public function getNim() {
         return $this->nim;
     }
     public function getNama() {
         return $this->nama;
     }
+
     public function getProdi() {
         return $this->prodi;
     }
+
     public function getSemester() {
         return $this->semester;
     }
+
     public function getNilai() {
         return $this->nilai;
     }
+
     public function tentukanGrade() {
         if ($this->nilai === null) {
             return "-";
         }
+
         if ($this->nilai >= 80) {
             return "A";
         } elseif ($this->nilai >= 70) {
@@ -51,13 +58,21 @@ class Mahasiswa {
         }
     }
 }
+
 $mhs1 = new Mahasiswa(
     "2301001",
     "Andi",
     "Sistem Informasi",
     3
 );
+$mhs2 = new Mahasiswa(
+    "2301002",
+    "Ani",
+    "Sistem Informasi",
+    3
+);
 $mhs1->setNilai(85);
+$mhs2->setNilai(50);
 
 echo "NIM: " . $mhs1->getNim() . "<br>";
 echo "Nama: " . $mhs1->getNama() . "<br>";
@@ -66,13 +81,10 @@ echo "Semester: " . $mhs1->getSemester() . "<br>";
 echo "Nilai: " . $mhs1->getNilai() . "<br>";
 echo "Grade: " . $mhs1->tentukanGrade() . "<br><br>";
 
-echo "Uji nilai 150:<br>";
-$mhs1->setNilai(150);
-echo "Nilai tetap: " . $mhs1->getNilai() . "<br><br>";
-
-$mhs2 = new Mahasiswa("2301002", "Budi", "Sistem Informasi", 3);
-foreach ([80, 79, 70, 69, 60, 59, 50, 49, 0, 100] as $n) {
-    $mhs2->setNilai($n);
-    echo "Nilai $n -> Grade " . $mhs2->tentukanGrade() . "<br>";
-}
+echo "NIM: " . $mhs2->getNim() . "<br>";
+echo "Nama: " . $mhs2->getNama() . "<br>";
+echo "Prodi: " . $mhs2->getProdi() . "<br>";
+echo "Semester: " . $mhs2->getSemester() . "<br>";
+echo "Nilai: " . $mhs2->getNilai() . "<br>";
+echo "Grade: " . $mhs2->tentukanGrade() . "<br>";
 ?>
